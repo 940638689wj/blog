@@ -1,75 +1,108 @@
 <template>
 <div>
-  <NavDiv></NavDiv>
-  <br><br><br><br>
-  <el-row type="flex" class="blogList" justify="center" v-for="blog in blogList">
-    <!-- <el-col :span="6"><div class="grid-content bg-purple"></div></el-col> -->
-    <el-col :span="12"><div class="grid-content bg-purple-light">
-      <p class="title"><b>{{blog.title}}</b></p>
-      <p class="author">
-        <i class="el-icon-edit"></i>{{blog.author}}&nbsp;&nbsp;&nbsp;&nbsp;
-        <i class="el-icon-time"></i>{{blog.createTime}}
-      </p>
-      <p>{{blog.content}}</p>
-      <p class="author"><i class="el-icon-document"></i>123</p>
-      <hr style="height:1px;border:none;border-top:1px solid #dddddd;" />
-    </div></el-col>
-    <!-- <el-col :span="6"><div class="grid-content bg-purple"></div></el-col> -->
+  <!-- 搜索栏 -->
+  <div class="search">
+    <el-input
+    placeholder="搜索标题"
+    icon="search"
+    v-model="searchContent"
+    :on-icon-click="loadList">
+    </el-input>
+  </div>
+  <div style="margin-top:100px"></div>
+  <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id">
+    <el-col :span="12">
+      <div class="grid-content bg-purple-light">
+        <p class="title">{{blog.title}}</p>
+        <p class="userName">
+          <i class="el-icon-edit"></i>{{blog.userName}}&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="el-icon-time"></i>{{blog.createTime}}
+        </p>
+        <p class="content" v-html="blog.content.length < 100 ? blog.content : blog.content.substring(0,100)+'...'"></p>
+        <p class="userName">{{blog.commentCount}}人评论</p>
+        <hr style="height:1px;border:none;border-top:1px solid #dddddd;" />
+      </div>
+    </el-col>
+  </el-row>
+  <!-- 分页 -->
+  <el-row type="flex" justify="end" class="pager">
+    <el-col :span="12">
+      <el-pagination
+          @current-change="loadList"
+          :current-page="pageNo"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="blogCount">
+      </el-pagination>
+    </el-col>
   </el-row>
 </div>
 </template>
 
 <script>
-import NavDiv from './components/Nav'
-
 export default {
   name: 'list',
   data () {
     return {
-      activeIndex: '1',
+      pageNo: 1,
+      pageSize: 10,
       searchContent: '',
-      blogList: [
-        {
-          title: '这是标题这是标题这是标题这是标题这是标题~~~',
-          content: '这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容...',
-          author: '作者',
-          createTime: '2017-04-02'
-        },
-        {
-          title: '这是标题这是标题这是标题这是标题这是标题~~~',
-          content: '这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容这是预览内容...',
-          author: '作者',
-          createTime: '2017-04-02'
-        }
-      ]
+      blogList: [],
+      blogCount: 0
     }
   },
-  components: {
-    NavDiv
-  },
   methods: {
-    handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+    // 加载分页数据
+    loadList (val) {
+      this.pageNo = val
+      this.$http.get('/index/bloglist/selectBlog', {
+        params: {
+          pageNo: this.pageNo,
+          pageSize: this.pageSize,
+          searchContent: '%' + this.searchContent + '%'
+        },
+        emulateJSON: true
+      }).then(
+        res => {
+          this.blogList = res.body.rows
+          this.blogCount = res.body.count
+        }
+      )
     },
-    handleIconClick () {
-      console.log('点击搜索')
+    toDetail () {
+      console.log(1)
     }
   },
   created () {
+    // 初始化文章列表
+    this.loadList(1)
   }
 }
 </script>
 
 <style scoped>
-.blogList{
-
+.search{
+  position: fixed;
+  z-index: 2;
+  right: 340px;
+  top: 12px; 
 }
 .title{
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: bold;
 }
-.author{
-  color: #cccccc;
+.title:HOVER {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.userName{
+  color: #999999;
   font-size: 14px;
 }
-
+.content{
+  font-size: 15px;
+}
+.pager{
+  padding: 30px 0 50px 0;
+}
 </style>
