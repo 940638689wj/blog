@@ -5,6 +5,6 @@ class Index
 {
     public function index()
     {
-        return 'im index';
+    	return 'im index';
     }
 }

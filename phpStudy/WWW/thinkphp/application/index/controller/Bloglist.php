@@ -8,23 +8,27 @@ class Bloglist
 	/**
 	*	文章列表数据
 	*/
-  	public function selectBlog($pageNo=1,$pageSize=10,$searchContent='')
+  	public function selectBlogList($pageNo=1,$pageSize=10,$blogTypeId='',$searchContent='')
     {
         // 列表
     	$select = Db::name('blog')
             ->alias('bl')
             ->join('user us','bl.userId = us.id')
+            ->join('blog_type bt','bl.blogTypeId = bt.id')
             ->limit(($pageNo - 1)*$pageSize,$pageSize)
             ->order('bl.id DESC')
             ->where('bl.title','like', $searchContent)
+            ->where('bl.blogTypeId','like', $blogTypeId)
             ->field('bl.id,bl.title,bl.content,bl.createTime,us.userName,
+                bl.blogTypeId,bt.name AS blogTypeName,
                 (select count(1) from comment where blogId = bl.id) AS commentCount')
             ->select();
         // 总数
         $selectCount = Db::name('blog')
             ->field('count(1) as count')
+            ->where('blogTypeId','like', $blogTypeId)
             ->find();
-       	return json(['rows'=>$select,'count'=>$selectCount['count'],'id'=>session('userId')]);
+       	return json(['rows'=>$select,'count'=>$selectCount['count']]);
     }
 
     // 添加文章

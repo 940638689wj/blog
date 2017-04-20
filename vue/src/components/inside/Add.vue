@@ -89,7 +89,7 @@ export default {
     }
   },
   created () {
-    // 加载类型列表
+    // 加载文章类型列表
     this.$http.get('/index/bloglist/findBlogType').then(
         res => {
           this.blogTypeList = res.body

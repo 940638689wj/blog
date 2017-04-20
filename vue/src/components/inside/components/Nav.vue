@@ -1,21 +1,23 @@
 <template>
   <div class="nav">
-    <el-menu theme="dark" :default-active="activeIndex" class="el-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">
+    <el-menu theme="dark" :default-active="blogTypeId" class="el-menu" mode="horizontal" @select="selectBlogType">
+      <el-menu-item index="0">
         <router-link :to="{name: 'List'}">首页</router-link>
       </el-menu-item>
-      <el-submenu index="2">
+      <el-menu-item v-for="(blogType,index) in blogTypeList" :index="1 + index + ''" key="blogType.id">
+        <router-link :to="{name: 'List'}">{{blogType.name}}</router-link>
+      </el-menu-item>
+      <!-- <el-submenu index="2">
         <template slot="title">文章分类</template>
         <el-menu-item index="2-1">分类1</el-menu-item>
         <el-menu-item index="2-2">分类2</el-menu-item>
         <el-menu-item index="2-3">分类3</el-menu-item>
-      </el-submenu>
+      </el-submenu> -->
     </el-menu>
 
     <!-- logo或标题 -->
     <div class="logo">
-      <b>尤琳杰の篮球博客</b>
-      <!-- <b>blog~</b> -->
+      <b>尤琳杰の篮球小窝</b>
     </div>
 
     <!-- 登录注册按钮 -->
@@ -47,11 +49,17 @@ export default {
   data () {
     return {
       isLogin: false,
-      activeIndex: '1',
-      searchContent: ''
+      searchContent: '',
+      blogTypeList: []
+    }
+  },
+  computed: {
+    blogTypeId () {
+      return this.$store.state.blogTypeId
     }
   },
   methods: {
+    // 登出
     logout () {
       this.$confirm('确认退出登录？', '退出', {
         type: 'warning'
@@ -63,16 +71,21 @@ export default {
           )
       })
     },
-    handleSelect (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleIconClick () {
-      console.log('点击搜索')
+    // 选择导航栏
+    selectBlogType (key, keyPath) {
+      this.$store.commit('selectBlogTypeId', key)
     }
   },
   created () {
+    // 获取是否登录
     this.$http.get('/index/entry/isLogin').then(
         res => { this.isLogin = res.body }
+      )
+    // 加载文章类型列表
+    this.$http.get('/index/bloglist/findBlogType').then(
+        res => {
+          this.blogTypeList = res.body
+        }
       )
   }
 }
@@ -107,5 +120,8 @@ export default {
   right: 0;
   top: 0;
   z-index: 1;
+}
+.nav a{
+  text-decoration: none;
 }
 </style>

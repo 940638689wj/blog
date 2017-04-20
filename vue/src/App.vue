@@ -16,7 +16,8 @@ export default {
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 .backImg{
-  background-image: url('./assets/image/background.jpg');
+  background-color: #555555;
+  /*background-image: url('./assets/image/background.jpg');*/
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;

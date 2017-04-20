@@ -13,14 +13,21 @@
   <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id">
     <el-col :span="12">
       <div class="grid-content bg-purple-light">
-        <p class="title">{{blog.title}}</p>
+        <p class="title">
+          <router-link :to="{name: 'Detail', params: {id: blog.id}}">
+            {{blog.title}}
+          </router-link>
+        </p>
         <p class="userName">
           <i class="el-icon-edit"></i>{{blog.userName}}&nbsp;&nbsp;&nbsp;&nbsp;
           <i class="el-icon-time"></i>{{blog.createTime}}
         </p>
         <p class="content" v-html="blog.content.length < 100 ? blog.content : blog.content.substring(0,100)+'...'"></p>
-        <p class="userName">{{blog.commentCount}}人评论</p>
-        <hr style="height:1px;border:none;border-top:1px solid #dddddd;" />
+        <p class="userName">
+          <el-button type="danger" :plain="true" size="mini" @click="selectBlogType(blog.blogTypeId)">{{blog.blogTypeName}}</el-button>
+          {{blog.commentCount}}人评论
+        </p>
+        <hr style="height:1px;border:none;border-top:1px solid #aaaaaa;" />
       </div>
     </el-col>
   </el-row>
@@ -51,14 +58,30 @@ export default {
       blogCount: 0
     }
   },
+  computed: {
+    // 文章类型
+    blogTypeId () {
+      if (this.$store.state.blogTypeId === '0') {
+        return ''
+      }
+      return this.$store.state.blogTypeId
+    }
+  },
+  watch: {
+    blogTypeId () {
+      this.loadList(1)
+    }
+  },
   methods: {
     // 加载分页数据
-    loadList (val) {
-      this.pageNo = val
-      this.$http.get('/index/bloglist/selectBlog', {
+    loadList (pageNo) {
+      console.log(this.blogTypeId)
+      this.pageNo = pageNo
+      this.$http.get('/index/bloglist/selectBlogList', {
         params: {
           pageNo: this.pageNo,
           pageSize: this.pageSize,
+          blogTypeId: '%' + this.blogTypeId + '%',
           searchContent: '%' + this.searchContent + '%'
         },
         emulateJSON: true
@@ -71,6 +94,10 @@ export default {
     },
     toDetail () {
       console.log(1)
+    },
+    // 选择导航栏
+    selectBlogType (blogTypeId) {
+      this.$store.commit('selectBlogTypeId', blogTypeId)
     }
   },
   created () {
@@ -87,13 +114,14 @@ export default {
   right: 340px;
   top: 12px; 
 }
-.title{
+.title a{
   font-size: 20px;
   font-weight: bold;
+  color: #000000;
+  text-decoration: none;
 }
 .title:HOVER {
   text-decoration: underline;
-  cursor: pointer;
 }
 .userName{
   color: #999999;
