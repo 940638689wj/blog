@@ -1545,3 +1545,25 @@ core:warn] [pid 5352:tid 512] AH00098: pid file H:/phpStudy/Apache/logs/httpd.pi
 [Thu Apr 20 21:32:28.786928 2017] [:error] [pid 6124:tid 1872] [client 127.0.0.1:6112] PHP Parse error:  syntax error, unexpected ')', expecting ']' in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 31, referer: http://localhost:8082/
 [Thu Apr 20 21:33:03.995942 2017] [:error] [pid 6124:tid 1880] [client 127.0.0.1:6205] PHP Parse error:  syntax error, unexpected ')', expecting ']' in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 31, referer: http://localhost:8082/
 [Thu Apr 20 21:33:04.062946 2017] [:error] [pid 6124:tid 1880] [client 127.0.0.1:6208] PHP Parse error:  syntax error, unexpected ')', expecting ']' in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 31, referer: http://localhost:8082/
+[Thu Apr 20 21:38:25.258317 2017] [mpm_winnt:crit] [pid 6124:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Thu Apr 20 21:38:30.381610 2017] [core:warn] [pid 6720:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Apr 20 21:38:30.688628 2017] [mpm_winnt:notice] [pid 6720:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Thu Apr 20 21:38:30.688628 2017] [mpm_winnt:notice] [pid 6720:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Thu Apr 20 21:38:30.688628 2017] [core:notice] [pid 6720:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Thu Apr 20 21:38:30.691628 2017] [mpm_winnt:notice] [pid 6720:tid 400] AH00418: Parent: Created child process 8764
+[Thu Apr 20 21:38:32.015703 2017] [mpm_winnt:notice] [pid 8764:tid 416] AH00354: Child: Starting 150 worker threads.
+[Thu Apr 20 21:40:00.498764 2017] [mpm_winnt:crit] [pid 8764:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Thu Apr 20 21:40:03.050910 2017] [core:warn] [pid 12052:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Apr 20 21:40:03.276923 2017] [mpm_winnt:notice] [pid 12052:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Thu Apr 20 21:40:03.276923 2017] [mpm_winnt:notice] [pid 12052:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Thu Apr 20 21:40:03.276923 2017] [core:notice] [pid 12052:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Thu Apr 20 21:40:03.279923 2017] [mpm_winnt:notice] [pid 12052:tid 400] AH00418: Parent: Created child process 11320
+[Thu Apr 20 21:40:04.562997 2017] [mpm_winnt:notice] [pid 11320:tid 416] AH00354: Child: Starting 150 worker threads.
+[Fri Apr 21 08:53:46.254985 2017] [mpm_winnt:notice] [pid 12052:tid 400] AH00428: Parent: child process 11320 exited with status 1073807364 -- Restarting.
+[Fri Apr 21 08:58:32.699526 2017] [core:warn] [pid 8404:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Apr 21 08:58:33.132551 2017] [mpm_winnt:notice] [pid 8404:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Fri Apr 21 08:58:33.132551 2017] [mpm_winnt:notice] [pid 8404:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Fri Apr 21 08:58:33.132551 2017] [core:notice] [pid 8404:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Fri Apr 21 08:58:33.147552 2017] [mpm_winnt:notice] [pid 8404:tid 400] AH00418: Parent: Created child process 8760
+[Fri Apr 21 08:58:36.402738 2017] [mpm_winnt:notice] [pid 8760:tid 416] AH00354: Child: Starting 150 worker threads.
+[Fri Apr 21 21:20:47.148713 2017] [mpm_winnt:notice] [pid 8404:tid 400] AH00428: Parent: child process 8760 exited with status 1073807364 -- Restarting.

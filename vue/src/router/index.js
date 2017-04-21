@@ -13,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/blog/list/0'
+      redirect: '/blog/list'
     },
     {
       path: '/entry/:selectedType',
