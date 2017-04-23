@@ -7,6 +7,8 @@
       <el-menu-item v-for="(blogType,index) in blogTypeList" :index="1 + index + ''" key="blogType.id">
         <router-link :to="{name: 'List'}">{{blogType.name}}</router-link>
       </el-menu-item>
+      <el-menu-item index="-2">我的文章</el-menu-item>
+      <el-menu-item index="-1">视频欣赏</el-menu-item>
       <!-- <el-submenu index="2">
         <template slot="title">文章分类</template>
         <el-menu-item index="2-1">分类1</el-menu-item>

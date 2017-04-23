@@ -10,7 +10,7 @@
     </el-input>
   </div>
   <div style="margin-top:100px"></div>
-  <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id">
+  <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id"  v-if="blogTypeId != -1">
     <el-col :span="12">
       <div class="grid-content bg-purple-light">
         <p class="title">
@@ -31,8 +31,27 @@
       </div>
     </el-col>
   </el-row>
+
+  <!-- 篮球视频 -->
+  <el-row type="flex" justify="center" v-if="blogTypeId == -1">
+    <el-col :span="12">
+      <div class="grid-content bg-purple-light">
+        <p class="title">NBA各球星篮球过人绝招教学集锦</p>
+        <embed height="600" width="100%" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6073139&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+      </div>
+      <br><br>
+      <hr style="height:1px;border:none;border-top:1px solid #aaaaaa;" />
+      <br><br>
+      <div class="grid-content bg-purple-light">
+        <p class="title">小托马斯教你如何成为一个NBA级别的球员！</p>
+        <embed height="600" width="100%" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=10011204&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+      </div>
+      <hr style="height:1px;border:none;border-top:1px solid #aaaaaa;" />
+    </el-col>
+  </el-row>
+
   <!-- 分页 -->
-  <el-row type="flex" justify="end" class="pager">
+  <el-row type="flex" justify="end" class="pager" v-if="blogTypeId != -1">
     <el-col :span="12">
       <el-pagination
           @current-change="loadList"
@@ -68,8 +87,11 @@ export default {
     }
   },
   watch: {
+    // 监听文章类型变动
     blogTypeId () {
-      this.loadList(1)
+      if (this.blogTypeId >= 0) {
+        this.loadList(1)
+      }
     }
   },
   methods: {
@@ -114,7 +136,7 @@ export default {
   right: 340px;
   top: 12px; 
 }
-.title a{
+.title,.title a{
   font-size: 20px;
   font-weight: bold;
   color: #000000;
