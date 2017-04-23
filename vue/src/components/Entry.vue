@@ -223,6 +223,6 @@ export default {
 
 <style scoped>
 .login{
-  padding-top: 240px;
+  padding-top: 200px;
 }
 </style>

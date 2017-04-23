@@ -89,6 +89,7 @@ export default {
     }
   },
   created () {
+    this.$store.commit('selectBlogTypeId', '-2')
     // 加载文章类型列表
     this.$http.get('/index/bloglist/findBlogType').then(
         res => {
@@ -106,7 +107,4 @@ export default {
 </script>
 
 <style scoped>
-.add{
-  padding-top: 150px;
-}
 </style>

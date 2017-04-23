@@ -2,12 +2,14 @@
 	<div>
 		<NavDiv></NavDiv>
     <div class="centerForContent"></div>
+    <Breadcrumb></Breadcrumb>
 		<router-view></router-view>
   </div>
 </template>
 
 <script>
 import NavDiv from './components/Nav'
+import Breadcrumb from './components/Breadcrumb'
 
 export default {
   name: '',
@@ -16,7 +18,8 @@ export default {
     }
   },
   components: {
-    NavDiv
+    NavDiv,
+    Breadcrumb
   },
   methods: {
   },

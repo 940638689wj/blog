@@ -6,6 +6,8 @@ import Index from '@/components/inside/Index'
 import List from '@/components/inside/List'
 import Add from '@/components/inside/Add'
 import Detail from '@/components/inside/Detail'
+import Video from '@/components/inside/Video'
+import Appoint from '@/components/inside/Appoint'
 
 Vue.use(Router)
 
@@ -35,9 +37,19 @@ export default new Router({
           component: Detail
         },
         {
+          path: 'video',
+          name: 'Video',
+          component: Video
+        },
+        {
           path: 'add',
           name: 'Add',
           component: Add
+        },
+        {
+          path: 'appoint',
+          name: 'Appoint',
+          component: Appoint
         }
       ]
     }

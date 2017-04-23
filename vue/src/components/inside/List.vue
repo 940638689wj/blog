@@ -9,14 +9,16 @@
     :on-icon-click="loadList">
     </el-input>
   </div>
-  <div style="margin-top:100px"></div>
-  <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id"  v-if="blogTypeId != -1">
+
+  <!-- 文章列表 -->
+  <el-row type="flex" justify="center" v-for="blog in blogList" :key="blog.id">
     <el-col :span="12">
       <div class="grid-content bg-purple-light">
         <p class="title">
           <router-link :to="{name: 'Detail', params: {id: blog.id}}">
             {{blog.title}}
           </router-link>
+          <el-button type="danger" class="delButton" @click="delBlog(blog.id)" v-if="blogTypeId == -2">删除</el-button>
         </p>
         <p class="userName">
           <i class="el-icon-edit"></i>{{blog.userName}}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,26 +34,8 @@
     </el-col>
   </el-row>
 
-  <!-- 篮球视频 -->
-  <el-row type="flex" justify="center" v-if="blogTypeId == -1">
-    <el-col :span="12">
-      <div class="grid-content bg-purple-light">
-        <p class="title">NBA各球星篮球过人绝招教学集锦</p>
-        <embed height="600" width="100%" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6073139&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-      </div>
-      <br><br>
-      <hr style="height:1px;border:none;border-top:1px solid #aaaaaa;" />
-      <br><br>
-      <div class="grid-content bg-purple-light">
-        <p class="title">小托马斯教你如何成为一个NBA级别的球员！</p>
-        <embed height="600" width="100%" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=10011204&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-      </div>
-      <hr style="height:1px;border:none;border-top:1px solid #aaaaaa;" />
-    </el-col>
-  </el-row>
-
   <!-- 分页 -->
-  <el-row type="flex" justify="end" class="pager" v-if="blogTypeId != -1">
+  <el-row type="flex" justify="end" class="pager">
     <el-col :span="12">
       <el-pagination
           @current-change="loadList"
@@ -72,7 +56,7 @@ export default {
     return {
       pageNo: 1,
       pageSize: 10,
-      searchContent: '',
+      searchContent: '', // 搜索内容
       blogList: [],
       blogCount: 0
     }
@@ -80,30 +64,24 @@ export default {
   computed: {
     // 文章类型
     blogTypeId () {
-      if (this.$store.state.blogTypeId === '0') {
-        return ''
-      }
       return this.$store.state.blogTypeId
     }
   },
   watch: {
     // 监听文章类型变动
     blogTypeId () {
-      if (this.blogTypeId >= 0) {
-        this.loadList(1)
-      }
+      this.loadList(1)
     }
   },
   methods: {
     // 加载分页数据
     loadList (pageNo) {
-      console.log(this.blogTypeId)
       this.pageNo = pageNo
       this.$http.get('/index/bloglist/selectBlogList', {
         params: {
           pageNo: this.pageNo,
           pageSize: this.pageSize,
-          blogTypeId: '%' + this.blogTypeId + '%',
+          blogTypeId: this.blogTypeId,
           searchContent: '%' + this.searchContent + '%'
         },
         emulateJSON: true
@@ -114,8 +92,26 @@ export default {
         }
       )
     },
-    toDetail () {
-      console.log(1)
+    // 删除文章
+    delBlog (id) {
+      this.$confirm('确认删除？', '删除', {
+        type: 'warning'
+      }).then(
+        () => {
+          this.$http.post('/index/bloglist/delBlog', {
+            id: id
+          }, {
+            emulateJSON: true
+          }).then(
+          res => {
+            if (res.body) {
+              this.$message.success('删除成功')
+              this.loadList(1)
+            }
+          }
+          )
+        }
+        )
     },
     // 选择导航栏
     selectBlogType (blogTypeId) {
@@ -133,7 +129,7 @@ export default {
 .search{
   position: fixed;
   z-index: 2;
-  right: 340px;
+  right: 400px;
   top: 12px; 
 }
 .title,.title a{
@@ -154,5 +150,8 @@ export default {
 }
 .pager{
   padding: 30px 0 50px 0;
+}
+.delButton{
+  float: right;
 }
 </style>

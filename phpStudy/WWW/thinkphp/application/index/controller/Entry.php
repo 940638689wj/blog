@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use think\Db;
 
+// 系统入口
 class Entry
 {
 	/**
@@ -11,12 +12,16 @@ class Entry
   	public function login($loginName='',$password='')
     {
     	$select = Db::name('user')->where('loginName','=',$loginName)->find();
-    	if ($select['password'] == md5($password))
+        if(!$select){
+            return json(['msg'=>'账号不存在','status'=>'2','data'=>'']);
+
+        }
+    	if ($select['password'] != md5($password))
     	{
-    		session('userId',$select['id']);
-        	return json(['msg'=>'ok','status'=>'1','data'=>'']);
-    	}
-    	return json(['msg'=>'密码错误','status'=>'2','data'=>'']);
+    	    return json(['msg'=>'密码错误','status'=>'2','data'=>'']);
+        }
+        session('userId',$select['id']);
+        return json(['msg'=>'ok','status'=>'1','data'=>'']);
     }
 
     /**
@@ -39,13 +44,14 @@ class Entry
     	$select = Db::name('user')->where('loginName','=',$_POST['loginName'])->find();
     	if(!$select)
     	{
-    		$insert = Db::name('user')->insert(
-    			['loginName'=>$_POST['loginName'], 
+    		$insert = Db::name('user')->insert([
+                'loginName'=>$_POST['loginName'], 
     			'password'=>md5($_POST['password']),
     			'userName'=>$_POST['userName'],
     			'provinceId'=>$_POST['provinceId'],
     			'cityId'=>$_POST['cityId'],
-    			'countryId'=>$_POST['countryId']
+    			'countryId'=>$_POST['countryId'],
+                'createTime'=>date("Y-m-d H:i:s")
     			]);
     		if($insert)
     		{
@@ -62,6 +68,17 @@ class Entry
     		return true;
     	}
     	return false;
+    }
+
+    // 查询当前用户信息
+    public function getUserName()
+    {
+        $select = Db::name('user')
+            ->where('id', '=', session('userId'))
+            ->field('loginName,userName')
+            ->find();
+
+        return $select;
     }
 
     // 退出登录

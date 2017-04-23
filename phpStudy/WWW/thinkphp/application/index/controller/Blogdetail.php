@@ -3,11 +3,10 @@ namespace app\index\controller;
 
 use think\Db;
 
+// 文章详情
 class Blogdetail
 {
-	/**
-	*	文章详情数据
-	*/
+    // 文章详情数据
   	public function selectBlog($id='')
     {
     	$select = Db::name('blog')
@@ -43,6 +42,7 @@ class Blogdetail
             ->where('blogId', '=', $blogId)
             ->order('co.id DESC')
             ->select();
+
         // 总数
         $selectCount = Db::name('comment')
             ->field('count(1) as count')

@@ -1,20 +1,26 @@
 <template>
   <div class="nav">
+  <!-- 标签页 -->
+  
     <el-menu theme="dark" :default-active="blogTypeId" class="el-menu" mode="horizontal" @select="selectBlogType">
       <el-menu-item index="0">
-        <router-link :to="{name: 'List'}">首页</router-link>
+        <router-link :to="{name: 'List'}">全部</router-link>
       </el-menu-item>
-      <el-menu-item v-for="(blogType,index) in blogTypeList" :index="1 + index + ''" key="blogType.id">
-        <router-link :to="{name: 'List'}">{{blogType.name}}</router-link>
-      </el-menu-item>
-      <el-menu-item index="-2">我的文章</el-menu-item>
-      <el-menu-item index="-1">视频欣赏</el-menu-item>
-      <!-- <el-submenu index="2">
+
+      <el-submenu index="-99">
         <template slot="title">文章分类</template>
-        <el-menu-item index="2-1">分类1</el-menu-item>
-        <el-menu-item index="2-2">分类2</el-menu-item>
-        <el-menu-item index="2-3">分类3</el-menu-item>
-      </el-submenu> -->
+        <el-menu-item index="1">技术讨论</el-menu-item>
+        <el-menu-item index="2">聊天灌水</el-menu-item>
+        <el-menu-item index="3">比赛交流</el-menu-item>
+      </el-submenu>
+
+      <el-menu-item index="-1">视频欣赏</el-menu-item>
+
+      <template v-if="isLogin">
+        <el-menu-item index="-2">我的文章</el-menu-item>
+        <el-menu-item index="-3">约战</el-menu-item>
+      </template>
+      
     </el-menu>
 
     <!-- logo或标题 -->
@@ -25,6 +31,7 @@
     <!-- 登录注册按钮 -->
     <div class="buttonGroup">
       <template v-if="isLogin">
+        <span style="color:#eeeeee">您好，{{userName}}</span>
         <el-button type="default" @click="logout">退出登录</el-button>
       </template>
       <template v-else>
@@ -46,11 +53,14 @@
 </template>
 
 <script>
+import router from '@/router'
+
 export default {
   name: 'nav',
   data () {
     return {
       isLogin: false,
+      userName: '',
       searchContent: '',
       blogTypeList: []
     }
@@ -69,19 +79,39 @@ export default {
         this.$http.get('/index/entry/logout').then(
             res => {
               this.isLogin = false
+              router.push({name: 'List'})
+              window.location.reload()
             }
           )
       })
     },
     // 选择导航栏
     selectBlogType (key, keyPath) {
-      this.$store.commit('selectBlogTypeId', key)
+      if (key !== '-1') {
+        this.$store.commit('selectBlogTypeId', key)
+      }
+      // 跳转至列表
+      if (key === '0' || key === '1' || key === '2' || key === '3' || key === '-2') {
+        router.push({name: 'List'})
+      }
+      // 跳转至视频
+      if (key === '-1') {
+        router.push({name: 'Video'})
+      }
+      // 跳转至约战
+      if (key === '-3') {
+        router.push({name: 'Appoint'})
+      }
     }
   },
   created () {
     // 获取是否登录
     this.$http.get('/index/entry/isLogin').then(
         res => { this.isLogin = res.body }
+      )
+    // 获取用户名
+    this.$http.get('/index/entry/getUserName').then(
+        res => { this.userName = res.body.userName }
       )
     // 加载文章类型列表
     this.$http.get('/index/bloglist/findBlogType').then(
@@ -102,7 +132,6 @@ export default {
   font-style: italic;
   color: #EA6F5A;
 }
-
 .buttonGroup{
   position: absolute;
   right: 30px;
@@ -110,7 +139,7 @@ export default {
 }
 .write{
   position: absolute;
-  right: 230px;
+  right: 280px;
   top: 12px;
 }
 .el-menu{
