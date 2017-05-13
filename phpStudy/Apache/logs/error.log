@@ -1621,3 +1621,91 @@ core:warn] [pid 5352:tid 512] AH00098: pid file H:/phpStudy/Apache/logs/httpd.pi
 [Sun Apr 23 20:37:34.109287 2017] [core:notice] [pid 3224:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
 [Sun Apr 23 20:37:34.111288 2017] [mpm_winnt:notice] [pid 3224:tid 400] AH00418: Parent: Created child process 8864
 [Sun Apr 23 20:37:35.396361 2017] [mpm_winnt:notice] [pid 8864:tid 416] AH00354: Child: Starting 150 worker threads.
+[Mon Apr 24 02:08:31.359057 2017] [mpm_winnt:crit] [pid 8864:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Mon Apr 24 16:40:12.529817 2017] [core:warn] [pid 10140:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Apr 24 16:40:12.871836 2017] [mpm_winnt:notice] [pid 10140:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Mon Apr 24 16:40:12.871836 2017] [mpm_winnt:notice] [pid 10140:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Mon Apr 24 16:40:12.871836 2017] [core:notice] [pid 10140:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Mon Apr 24 16:40:12.877837 2017] [mpm_winnt:notice] [pid 10140:tid 400] AH00418: Parent: Created child process 9136
+[Mon Apr 24 16:40:15.217971 2017] [mpm_winnt:notice] [pid 9136:tid 416] AH00354: Child: Starting 150 worker threads.
+[Tue Apr 25 08:57:48.521748 2017] [mpm_winnt:notice] [pid 10140:tid 400] AH00428: Parent: child process 9136 exited with status 1073807364 -- Restarting.
+[Tue Apr 25 09:54:53.798630 2017] [core:warn] [pid 9708:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Apr 25 09:54:54.114648 2017] [mpm_winnt:notice] [pid 9708:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Tue Apr 25 09:54:54.114648 2017] [mpm_winnt:notice] [pid 9708:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Tue Apr 25 09:54:54.114648 2017] [core:notice] [pid 9708:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Tue Apr 25 09:54:54.120649 2017] [mpm_winnt:notice] [pid 9708:tid 400] AH00418: Parent: Created child process 3344
+[Tue Apr 25 09:54:56.513786 2017] [mpm_winnt:notice] [pid 3344:tid 416] AH00354: Child: Starting 150 worker threads.
+[Tue Apr 25 14:54:26.635618 2017] [:error] [pid 3344:tid 1872] [client 127.0.0.1:14845] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 21, referer: http://localhost:8082/
+[Tue Apr 25 14:54:26.679620 2017] [:error] [pid 3344:tid 1864] [client 127.0.0.1:14846] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 21, referer: http://localhost:8082/
+[Tue Apr 25 14:55:41.141879 2017] [:error] [pid 3344:tid 1872] [client 127.0.0.1:14903] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 21, referer: http://localhost:8082/
+[Tue Apr 25 14:55:41.207883 2017] [:error] [pid 3344:tid 1848] [client 127.0.0.1:14904] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Bloglist.php on line 21, referer: http://localhost:8082/
+[Tue Apr 25 18:59:28.493516 2017] [mpm_winnt:crit] [pid 3344:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Fri Apr 28 19:56:21.208274 2017] [core:warn] [pid 10160:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Apr 28 19:56:21.592296 2017] [mpm_winnt:notice] [pid 10160:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Fri Apr 28 19:56:21.593296 2017] [mpm_winnt:notice] [pid 10160:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Fri Apr 28 19:56:21.593296 2017] [core:notice] [pid 10160:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Fri Apr 28 19:56:21.600297 2017] [mpm_winnt:notice] [pid 10160:tid 400] AH00418: Parent: Created child process 8664
+[Fri Apr 28 19:56:23.905429 2017] [mpm_winnt:notice] [pid 8664:tid 416] AH00354: Child: Starting 150 worker threads.
+[Fri Apr 28 21:53:03.381776 2017] [mpm_winnt:notice] [pid 10160:tid 400] AH00428: Parent: child process 8664 exited with status 1073807364 -- Restarting.
+[Sat Apr 29 01:04:53.190656 2017] [core:warn] [pid 7112:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Apr 29 01:04:53.529675 2017] [mpm_winnt:notice] [pid 7112:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sat Apr 29 01:04:53.529675 2017] [mpm_winnt:notice] [pid 7112:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sat Apr 29 01:04:53.529675 2017] [core:notice] [pid 7112:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sat Apr 29 01:04:53.540676 2017] [mpm_winnt:notice] [pid 7112:tid 400] AH00418: Parent: Created child process 6240
+[Sat Apr 29 01:05:10.430642 2017] [core:warn] [pid 5492:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Apr 29 01:05:10.658655 2017] [mpm_winnt:notice] [pid 5492:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sat Apr 29 01:05:10.658655 2017] [mpm_winnt:notice] [pid 5492:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sat Apr 29 01:05:10.658655 2017] [core:notice] [pid 5492:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sat Apr 29 01:05:10.663656 2017] [mpm_winnt:notice] [pid 5492:tid 400] AH00418: Parent: Created child process 6988
+[Sat Apr 29 01:05:12.971788 2017] [mpm_winnt:notice] [pid 6988:tid 416] AH00354: Child: Starting 150 worker threads.
+[Sat Apr 29 06:31:04.706083 2017] [mpm_winnt:notice] [pid 5492:tid 400] AH00428: Parent: child process 6988 exited with status 1073807364 -- Restarting.
+[Mon May 01 02:34:00.255503 2017] [core:warn] [pid 8124:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon May 01 02:34:00.601523 2017] [mpm_winnt:notice] [pid 8124:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Mon May 01 02:34:00.601523 2017] [mpm_winnt:notice] [pid 8124:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Mon May 01 02:34:00.601523 2017] [core:notice] [pid 8124:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Mon May 01 02:34:00.607523 2017] [mpm_winnt:notice] [pid 8124:tid 400] AH00418: Parent: Created child process 7724
+[Mon May 01 02:34:03.175670 2017] [mpm_winnt:notice] [pid 7724:tid 416] AH00354: Child: Starting 150 worker threads.
+[Tue May 02 04:05:15.306456 2017] [mpm_winnt:notice] [pid 8124:tid 400] AH00428: Parent: child process 7724 exited with status 1073807364 -- Restarting.
+[Tue May 02 21:21:31.723433 2017] [core:warn] [pid 10752:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue May 02 21:21:32.046452 2017] [mpm_winnt:notice] [pid 10752:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Tue May 02 21:21:32.046452 2017] [mpm_winnt:notice] [pid 10752:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Tue May 02 21:21:32.046452 2017] [core:notice] [pid 10752:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Tue May 02 21:21:32.051452 2017] [mpm_winnt:notice] [pid 10752:tid 400] AH00418: Parent: Created child process 4296
+[Tue May 02 21:21:34.450589 2017] [mpm_winnt:notice] [pid 4296:tid 416] AH00354: Child: Starting 150 worker threads.
+[Wed May 03 09:10:57.105034 2017] [mpm_winnt:notice] [pid 10752:tid 400] AH00428: Parent: child process 4296 exited with status 1073807364 -- Restarting.
+[Sun May 07 01:26:23.658972 2017] [core:warn] [pid 6804:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 07 01:26:24.040994 2017] [mpm_winnt:notice] [pid 6804:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sun May 07 01:26:24.040994 2017] [mpm_winnt:notice] [pid 6804:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sun May 07 01:26:24.040994 2017] [core:notice] [pid 6804:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sun May 07 01:26:24.051994 2017] [mpm_winnt:notice] [pid 6804:tid 400] AH00418: Parent: Created child process 6796
+[Sun May 07 01:26:26.587139 2017] [mpm_winnt:notice] [pid 6796:tid 416] AH00354: Child: Starting 150 worker threads.
+[Sun May 07 01:35:30.337375 2017] [core:warn] [pid 1084:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 07 01:35:30.651393 2017] [mpm_winnt:notice] [pid 1084:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sun May 07 01:35:30.651393 2017] [mpm_winnt:notice] [pid 1084:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sun May 07 01:35:30.651393 2017] [core:notice] [pid 1084:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sun May 07 01:35:30.656394 2017] [mpm_winnt:notice] [pid 1084:tid 400] AH00418: Parent: Created child process 3900
+[Sun May 07 01:35:33.102534 2017] [mpm_winnt:notice] [pid 3900:tid 416] AH00354: Child: Starting 150 worker threads.
+[Mon May 08 03:44:21.294358 2017] [mpm_winnt:notice] [pid 1084:tid 400] AH00428: Parent: child process 3900 exited with status 1073807364 -- Restarting.
+[Sun May 14 01:50:18.699366 2017] [core:warn] [pid 6428:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 14 01:50:19.043386 2017] [mpm_winnt:notice] [pid 6428:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sun May 14 01:50:19.043386 2017] [mpm_winnt:notice] [pid 6428:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sun May 14 01:50:19.043386 2017] [core:notice] [pid 6428:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sun May 14 01:50:19.129391 2017] [mpm_winnt:notice] [pid 6428:tid 400] AH00418: Parent: Created child process 7704
+[Sun May 14 01:50:21.608533 2017] [mpm_winnt:notice] [pid 7704:tid 416] AH00354: Child: Starting 150 worker threads.
+[Sun May 14 01:53:03.256779 2017] [mpm_winnt:crit] [pid 7704:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Sun May 14 01:53:20.807782 2017] [core:warn] [pid 1588:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 14 01:53:21.042796 2017] [mpm_winnt:notice] [pid 1588:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sun May 14 01:53:21.042796 2017] [mpm_winnt:notice] [pid 1588:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sun May 14 01:53:21.042796 2017] [core:notice] [pid 1588:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sun May 14 01:53:21.047796 2017] [mpm_winnt:notice] [pid 1588:tid 400] AH00418: Parent: Created child process 5824
+[Sun May 14 01:53:23.376929 2017] [mpm_winnt:notice] [pid 5824:tid 416] AH00354: Child: Starting 150 worker threads.
+[Sun May 14 02:23:03.891769 2017] [:error] [pid 5824:tid 1848] [client 127.0.0.1:3634] PHP Parse error:  syntax error, unexpected '$selectUser' (T_VARIABLE) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Appoint.php on line 13, referer: http://localhost:8082/
+[Sun May 14 02:23:03.894769 2017] [:error] [pid 5824:tid 1864] [client 127.0.0.1:3633] PHP Parse error:  syntax error, unexpected '$selectUser' (T_VARIABLE) in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Appoint.php on line 13, referer: http://localhost:8082/
+[Sun May 14 02:30:44.130093 2017] [:error] [pid 5824:tid 1880] [client 127.0.0.1:3818] PHP Fatal error:  Call to a member function where() on a non-object in E:\\phpProjects\\blog\\phpStudy\\WWW\\thinkphp\\application\\index\\controller\\Appoint.php on line 41, referer: http://localhost:8082/
+[Sun May 14 02:37:41.812983 2017] [mpm_winnt:crit] [pid 5824:tid 416] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Sun May 14 02:37:45.490194 2017] [core:warn] [pid 7520:tid 400] AH00098: pid file E:/phpProjects/blog/phpStudy/Apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 14 02:37:45.722207 2017] [mpm_winnt:notice] [pid 7520:tid 400] AH00455: Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 configured -- resuming normal operations
+[Sun May 14 02:37:45.722207 2017] [mpm_winnt:notice] [pid 7520:tid 400] AH00456: Server built: Jul  1 2016 16:42:20
+[Sun May 14 02:37:45.722207 2017] [core:notice] [pid 7520:tid 400] AH00094: Command line: 'E:\\phpProjects\\blog\\phpStudy\\Apache\\bin\\httpd.exe -d E:/phpProjects/blog/phpStudy/Apache'
+[Sun May 14 02:37:45.728207 2017] [mpm_winnt:notice] [pid 7520:tid 400] AH00418: Parent: Created child process 8008
+[Sun May 14 02:37:48.054340 2017] [mpm_winnt:notice] [pid 8008:tid 416] AH00354: Child: Starting 150 worker threads.

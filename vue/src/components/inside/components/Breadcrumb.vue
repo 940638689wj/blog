@@ -38,7 +38,10 @@ export default {
         return '我的文章'
       }
       if (blogTypeId === '-3') {
-        return '约战'
+        return '同区约战'
+      }
+      if (blogTypeId === '-4') {
+        return '同市约战'
       }
       return ''
     }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-23 20:41:37
+Date: 2017-05-14 02:36:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,17 +23,22 @@ CREATE TABLE `appoint` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fromUserId` int(11) DEFAULT NULL COMMENT '申请者id',
   `toUserId` int(11) DEFAULT NULL COMMENT '申请目标id',
+  `qq` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL COMMENT '申请描述',
   `status` int(11) DEFAULT NULL COMMENT '申请状态 1：待回复 2：通过 3：拒绝',
   `createTime` datetime DEFAULT NULL COMMENT '申请时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appoint
 -- ----------------------------
-INSERT INTO `appoint` VALUES ('4', '1', '2', 'hi~我在你附近 周末一起出来玩吗 我在xxx等你 有空的话联系12300000001', '1', '2017-04-23 18:47:22');
-INSERT INTO `appoint` VALUES ('5', '5', '2', '来比赛吗 我在xxxx等你', '2', '2017-04-23 20:23:10');
+INSERT INTO `appoint` VALUES ('4', '1', '2', null, null, 'hi~我在你附近 周末一起出来玩吗 我在xxx等你 有空的话联系12300000001', '1', '2017-04-23 18:47:22');
+INSERT INTO `appoint` VALUES ('5', '5', '2', null, null, '来比赛吗 我在xxxx等你', '2', '2017-04-23 20:23:10');
+INSERT INTO `appoint` VALUES ('7', '2', '6', '111', '222', '3333', '1', '2017-05-14 02:09:03');
+INSERT INTO `appoint` VALUES ('8', '6', '1', '4', '5', '6', '1', '2017-05-14 02:11:16');
+INSERT INTO `appoint` VALUES ('9', '6', '2', '7', '8', '9', '1', '2017-05-14 02:11:25');
 
 -- ----------------------------
 -- Table structure for area
@@ -3939,16 +3944,16 @@ CREATE TABLE `blog` (
   `status` int(255) DEFAULT NULL COMMENT '状态 1：正常 2：删除',
   `createTime` datetime DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of blog
 -- ----------------------------
 INSERT INTO `blog` VALUES ('2', '2', '标题二~~~', '内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容内容内容好多内容', '2', '1', '2017-04-16 22:33:53');
-INSERT INTO `blog` VALUES ('4', '1', '123123123', '<p>fffffffffffff</p>', '1', '1', '2017-04-17 04:09:21');
 INSERT INTO `blog` VALUES ('5', '1', '333', '<p><ol><li>在这里<br></li><li>那里</li><li>猜</li></ol></p><p><br></p>', '1', '1', '2017-04-17 05:32:20');
 INSERT INTO `blog` VALUES ('6', '1', '测试一个', '<p>&nbsp;&nbsp;&nbsp;&nbsp;为详情测试一段很长的文章。<br></p><p>&nbsp; &nbsp; 这是第一段~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br></p><p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br></p><p><br></p>', '1', '1', '2017-04-20 19:37:42');
 INSERT INTO `blog` VALUES ('7', '1', '测试两个', '<p>&nbsp; &nbsp; 这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~<br></p><p>这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~<br></p><p>这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~<br></p><p>这里是很长的第一段内容~~</p><p>&nbsp; &nbsp; <b><u><i>这里是很长的第二段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~<br></i></u></b></p><p><b><u><i>这里是很长的第一段内容~~这里是很长的第一段内容~~这里是很长的第一段内容~~<br></i></u></b></p><p><b><u><i>这里是很长的第一段内容~</i></u></b></p><p></p><ul><li>内容一<br></li><li>内容二</li><li>内容三</li></ul><p></p><p style=\"text-align: center; \">居中一段内容~</p><p style=\"text-align: left;\"><a href=\"http://www.baidu.com\" target=\"_blank\">http://www.baidu.com</a><br></p><table class=\"\"><tbody><tr><td>&nbsp;1 &nbsp;</td><td>2 &nbsp; &nbsp;</td><td>3&nbsp;</td><td>4&nbsp;</td><td>5&nbsp;</td></tr><tr><td>6&nbsp;</td><td>&nbsp;</td><td>8&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;9</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p><br></p>', '3', '1', '2017-04-20 19:41:36');
+INSERT INTO `blog` VALUES ('8', '1', '科比：不想念打球的感觉，但篮球并未离开过我', '<p>虎扑篮球4月25日讯&nbsp;湖人名宿科比-布莱恩特在今天参加了《早安美国》的节目录制，期间，他被问到是否想念打球的感觉。</p><p>科比的回复是：“不，我不想。”</p><p>之后他详细解释道：“我2岁的时候就开始打球了，在联盟征战了20个赛季之后，我从这门运动中学到了一切，那些知识即便到了现在也仍然存在，所以，这门运动本身并未真正离开过我。”</p><p>“身体上，是的，它离开了我，但从心理上，我写的所有东西都源自于比赛，所以，篮球仍是我的一部分，对于运动员来说，你要知道，总是会迎来生涯终结的，这没有关系，毕竟你很难放手你做了半辈子的事业。”科比说道。</p><p></p><p>20年职业生涯，科比场均能够得到25分5.2篮板4.7助攻1.4抢断，他夺得5次冠军，18次全明星，并在2008年当选常规赛MVP。</p><p><br></p>', '1', '1', '2017-04-25 12:16:01');
 
 -- ----------------------------
 -- Table structure for blog_type
@@ -3978,7 +3983,7 @@ CREATE TABLE `comment` (
   `content` varchar(255) DEFAULT NULL COMMENT '评论内容',
   `createTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
@@ -3989,6 +3994,8 @@ INSERT INTO `comment` VALUES ('4', '7', '1', '<p><font size=\"7\">超大的评�
 INSERT INTO `comment` VALUES ('5', '7', '1', '<p>一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~<br></p><p>一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~一个比较长的评论~~~~<br></p><p><br></p>', '2017-04-20 21:25:06');
 INSERT INTO `comment` VALUES ('6', '7', '1', '<p>123</p>', '2017-04-20 21:25:45');
 INSERT INTO `comment` VALUES ('7', '7', '1', '<blockquote><p>1111111</p></blockquote><p><br></p>', '2017-04-20 21:34:26');
+INSERT INTO `comment` VALUES ('8', '8', '1', '<p>文章写的不错~</p>', '2017-04-25 12:22:56');
+INSERT INTO `comment` VALUES ('9', '8', '2', '<p>赞一个~~~</p>', '2017-04-25 12:23:32');
 
 -- ----------------------------
 -- Table structure for user
@@ -4012,4 +4019,4 @@ CREATE TABLE `user` (
 INSERT INTO `user` VALUES ('1', 'test', 'e10adc3949ba59abbe56e057f20f883e', '小白', '1', '2', '3', '2017-04-12 15:31:04');
 INSERT INTO `user` VALUES ('2', 'test1', 'e10adc3949ba59abbe56e057f20f883e', '测试1', '1', '2', '3', '2017-04-23 17:36:35');
 INSERT INTO `user` VALUES ('5', 'test2', 'e10adc3949ba59abbe56e057f20f883e', '小白', '1', '2', '3', '2017-04-23 17:36:39');
-INSERT INTO `user` VALUES ('6', 'test3', 'e10adc3949ba59abbe56e057f20f883e', '小红', '1', '2', '3', '2017-04-23 17:36:41');
+INSERT INTO `user` VALUES ('6', 'test3', 'e10adc3949ba59abbe56e057f20f883e', '小红', '1', '2', '2', '2017-04-23 17:36:41');

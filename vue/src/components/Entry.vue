@@ -11,7 +11,7 @@
             </el-form-item>
 
             <el-form-item label="密码" prop="password">
-              <el-input v-model="loginForm.password"></el-input>
+              <el-input type="password" v-model="loginForm.password"></el-input>
             </el-form-item>
 
             <el-form-item>
@@ -30,11 +30,11 @@
             </el-form-item>
 
             <el-form-item label="密码" prop="password">
-              <el-input v-model="registerForm.password"></el-input>
+              <el-input type="password" v-model="registerForm.password"></el-input>
             </el-form-item>
 
             <el-form-item label="重复密码" prop="agPassword">
-              <el-input v-model="registerForm.agPassword"></el-input>
+              <el-input type="password" v-model="registerForm.agPassword"></el-input>
             </el-form-item>
 
             <el-form-item label="用户名" prop="userName">

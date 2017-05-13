@@ -18,7 +18,8 @@
 
       <template v-if="isLogin">
         <el-menu-item index="-2">我的文章</el-menu-item>
-        <el-menu-item index="-3">约战</el-menu-item>
+        <el-menu-item index="-3">同区约战</el-menu-item>
+        <el-menu-item index="-4">同市约战</el-menu-item>
       </template>
       
     </el-menu>
@@ -100,7 +101,10 @@ export default {
       }
       // 跳转至约战
       if (key === '-3') {
-        router.push({name: 'Appoint'})
+        router.push({name: 'Appoint', query: {type: 1}})
+      }
+      if (key === '-4') {
+        router.push({name: 'Appoint', query: {type: 2}})
       }
     }
   },

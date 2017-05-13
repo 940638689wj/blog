@@ -15,7 +15,7 @@
               <template scope="scope">
                 <el-button type="primary" size="small" v-if="!scope.row.status"
                   @click="submitAppointDialogShow(scope.$index, scope.row)">约战申请</el-button>
-                <el-button size="small" v-if="scope.row.status == 1"
+                <el-button size="small" v-if="scope.row.status"
                   @click="cancelAppoint(scope.$index, scope.row)">撤回申请</el-button>
               </template>
             </el-table-column>
@@ -46,6 +46,8 @@
             <el-table-column prop="loginName" label="账号"></el-table-column>
             <el-table-column prop="userName" label="用户名"></el-table-column>
             <el-table-column prop="statusName" label="状态"></el-table-column>
+            <el-table-column prop="qq" label="qq号"></el-table-column>
+            <el-table-column prop="phone" label="手机号"></el-table-column>
             <el-table-column prop="" label="操作">
               <template scope="scope">
                 <template  v-if="scope.row.status == 1">
@@ -79,6 +81,12 @@
   <!-- 约战申请对话框 -->
   <el-dialog title="约战申请" v-model="submitAppointDialog">
     <el-form>
+      <el-form-item label="qq号" label-width="80px">
+        <el-input v-model="form.qq"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号" label-width="80px">
+        <el-input v-model="form.phone"></el-input>
+      </el-form-item>
       <el-form-item label="申请描述" label-width="80px">
         <el-input type="textarea" v-model="form.content" :autosize="{minRows: 5}" placeholder="请输入申请信息，如自我介绍、联系方式和详细地址等"></el-input>
       </el-form-item>
@@ -105,6 +113,8 @@ export default {
       sendCount: 0,
       form: {
         toUserId: 0,
+        qq: '',
+        phone: '',
         content: ''
       },
       submitAppointDialog: false,
@@ -113,6 +123,16 @@ export default {
       receivePageSize: 10,
       receiveList: [], // 收到约战列表
       receiveCount: 0
+    }
+  },
+  computed: {
+    type () {
+      return this.$route.query.type
+    }
+  },
+  watch: {
+    type () {
+      this.loadSendList(1)
     }
   },
   methods: {
@@ -137,7 +157,8 @@ export default {
       this.$http.get('/index/appoint/findSend', {
         params: {
           pageNo: this.sendPageNo,
-          pageSize: this.sendPageSize
+          pageSize: this.sendPageSize,
+          type: this.type
         },
         emulateJSON: true
       }).then(
@@ -162,6 +183,8 @@ export default {
         if (res.body) {
           this.$message.success('申请成功')
           this.submitAppointDialog = false
+          this.form.qq = ''
+          this.form.phone = ''
           this.form.content = ''
           this.loadSendList()
         }
@@ -195,7 +218,8 @@ export default {
       this.$http.get('/index/appoint/findReceive', {
         params: {
           pageNo: this.receivePageNo,
-          pageSize: this.receivePageSize
+          pageSize: this.receivePageSize,
+          type: this.type
         },
         emulateJSON: true
       }).then(
